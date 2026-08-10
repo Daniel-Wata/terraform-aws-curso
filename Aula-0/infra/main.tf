@@ -21,4 +21,6 @@ resource "aws_s3_bucket" "state-bucket" {
     Name        = "State bucket"
     Environment = "Prod"
   }
+
+  force_destroy = true
 }
