@@ -1,0 +1,38 @@
+# ---------------------------------------------------------------------------
+# Terraform
+# ---------------------------------------------------------------------------
+
+# Providers baixados e cache de módulos. Descartável — `terraform init` refaz.
+# É também o que ocupa espaço: centenas de MB por diretório.
+.terraform/
+
+# State. NUNCA vai para o git.
+#
+# Ele guarda o mapa entre o seu código e os recursos reais — e guarda os valores
+# em TEXTO PURO, incluindo senha de banco, chave de aplicação e qualquer coisa
+# que um recurso devolva. Um state commitado num repositório público é um
+# vazamento de credencial, mesmo que hoje ele só tenha um bucket dentro.
+terraform.tfstate
+terraform.tfstate.backup
+*.tfstate
+*.tfstate.*
+
+# Arquivos de variáveis costumam ter valores reais. Commite o .example.
+*.tfvars
+!*.tfvars.example
+
+# Planos salvos são binários e podem conter segredo.
+*.tfplan
+
+# Dump de crash do Terraform.
+crash.log
+crash.*.log
+
+# ATENÇÃO: .terraform.lock.hcl NÃO está ignorado, de propósito.
+# Ele fixa a versão e o checksum de cada provider — é o que garante que a mesma
+# configuração produza o mesmo resultado em outra máquina. Esse vai para o git.
+
+# ---------------------------------------------------------------------------
+# Sistema
+# ---------------------------------------------------------------------------
+.DS_Store
